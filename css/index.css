@@ -63,8 +63,8 @@ header{
 .left-menu{
     color: #dfdfdf;
     width: 228px;
-    height: 559px;
-    background: #6e6568;
+    height: 570px;
+    background: #ff6100;
     border-radius: 2px;
     padding:8px;
 }
@@ -140,8 +140,8 @@ header{
 
 .person-info .logoin span{
     display: inline-block;
-    color: #cc1c29;
-    border: 1px solid #cc1c29;
+    color: #ff6100;
+    border: 1px solid #ff6100;
     border-radius: 2px;
     width: 50px;
     text-align: center;
@@ -153,18 +153,92 @@ header{
 
 .person-info .logoin span:hover{
     color: #fafafa;
-    background: #e60011;
+    background: #ff6100;
 }
 
 /*#e60011*/
 .news-info{
     margin-top:5px;
+    height: 230px;
+    overflow: hidden;
+}
+.news-info .title{
+
+}
+.news-info .news-content{
+    font-size:13px;
+}
+
+.news-info .news-content .item{
+    margin: 8px 0 8px 12px;
+    color: #333;
+    cursor: pointer;
+}
+
+.news-info .news-content .item:hover{
+    color: #1abc9c;
+}
+
+.news-info .title span{
+    color: #666;
+    display: inline-block;
+    cursor: pointer;
+    width:82px;
+    text-align: center;
+    font-size:15px;
+    border-bottom: 2px solid #ccc;
+    letter-spacing: 0;
+    margin: 0 -2px;
+    height: 25px;
+    line-height:25px;
+}
+
+.news-info .title span:hover,.news-info .title span.active{
+    color: #333;
+    border-bottom: 2px solid #1abc9c;
+}
+
+.bottom-item .tools-icon{
+    width:60px;
+    height: 60px;
+    line-height:68px;
+    text-align: center;
+    background: #1dbfa4;
+    border-radius: 30px;
+    margin:5px auto 0 auto;
+}
+
+.bottom-item .tools-title{
+    text-align: center;
+    padding: 4px 0;
+    font-size: 15px;
+    color: #333;
+    line-height: 24px;
+}
+.bottom-item .tools-content{
+    font-size: 12px;
+    color: #666;
+    line-height: 20px;
+    padding: 0 10px;
+}
+
+.bottom-item i{
+    color: #fff;
+    font-size: 25px;
 }
 .bottom-item .item{
     width:244px;
     height: 160px;
-    background: antiquewhite;
-    margin:10px 0 0 10px;
+    margin:20px 0 0 10px;
+    cursor: pointer;
+}
+
+.bottom-item .item:hover{
+    box-shadow: 0 0 10px #ccc;
+}
+
+.module-title{
+    border-bottom: 1px #ccc solid;
 }
 .module-title .title{
     height: 30px;
