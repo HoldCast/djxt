@@ -22,9 +22,14 @@
                 <ul>
                     <li type="home">主页</li>
                     <li type="news">信息要闻</li>
+                    <li type="other">业务办理</li>
+                    <li type="manage">党建管理</li>
+                    <li type="other">个人中心</li>
+                    <!--
                     <li type="tools">业务办理</li>
                     <li type="manage">党建管理</li>
                     <li type="center">个人中心</li>
+                    -->
                 </ul>
             </div>
         </div>
@@ -116,7 +121,7 @@
         <div class="main-module" id="manage">manage</div>
     </div>
     <footer>
-        <div class="party-slogan">
+        <div class="party-slogan" id="partySlogan">
             <img src="../img/slogan_1.png" alt="">
         </div>
         <div class="website-info">
@@ -155,13 +160,22 @@
             $('#navMenu li').off('click').on('click',function () {
                 var $this = $(this);
                 var type = $this.attr('type');
-                $('.main-module').hide();
-                $('#'+type).show();
+                if(type == 'other'){
+                    alert('建设中...');
+                    return false;
+                }
+
+
                 if(type == 'home'){
                     $('#navMenu li').removeClass('active');
                     $('body,html').animate({
                         scrollTop: 0
                     }, 600);
+                    $('#partySlogan').show();
+                }
+                else if(type == 'manage'){
+                    window.open('http://localhost:8088/djxt-admin');
+                    return false;
                 }
                 else{
                     var height = $('#banner').height();
@@ -169,24 +183,11 @@
                         scrollTop: height-60
                     }, 600);
                     $this.addClass('active').siblings().removeClass('active');
+                    $('#partySlogan').hide();
                 }
 
-
-                if(type == 'home'){
-
-                }
-                else if(type == 'news'){
-
-                }
-                else if(type == 'tools'){
-
-                }
-                else if(type == 'center'){
-
-                }
-                else if(type == 'manage'){
-
-                }
+                $('.main-module').hide();
+                $('#'+type).show();
             });
             $('#home').show();
         }
