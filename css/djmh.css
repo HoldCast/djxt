@@ -56,12 +56,12 @@ header .nav{
 .banner{
     width:100%;
     overflow: hidden;
-    background: url("../img/dst2.png")  no-repeat;
+    background: url("../img/dst.png")  no-repeat;
     background-size: cover;
     line-height: 100%;
 }
 .banner .slogan{
-    color: #eee;
+    color: #ecb500;
     font-size: 45px;
     text-align: center;
 }
