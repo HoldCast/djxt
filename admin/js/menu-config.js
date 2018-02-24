@@ -90,10 +90,7 @@ var homeMenu = [
     {
         name: '用户管理',
         icon: 'fa-user',
-        children: [
-            {name: '账号设置',type: 'zhsz'},
-            {name: '密码修改',type: 'mmxg'},
-            {name: '退出登录',type: 'login'}
-        ]
+        type: 'user',
+        children: []
     }
 ];

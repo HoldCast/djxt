@@ -37,28 +37,20 @@
         <section class="wrapper" id="wrapper">
             <div class="jgsz clearfix">
                 <div class="left-tree pull-left">
-                    <!-- Button trigger modal -->
-                    <div class="title">
-                        组织机构
-                    </div>
+                    <div class="title">组织机构</div>
                     <ul id="zzjgTree" class="ztree"></ul>
                 </div>
                 <div class="right-content pull-left">
                     <div class="table-agile-info">
                         <div class="panel panel-default">
-                            <div class="panel-heading" id="zzjgTableName">
-                                双桥子街道党工委
-                            </div>
+                            <div class="panel-heading" id="zzjgTableName">双桥子街道党工委</div>
                             <div class="row w3-res-tb">
                                 <div class="col-sm-12 m-b-xs">
-                                    <button id="addZzjg" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#zzjgModal">
+                                    <button id="addZzjg" class="btn btn-sm btn-primary">
                                         添加子组织
                                     </button>
-                                    <button id="editZzjg" class="btn btn-sm btn-primary" >
+                                    <button id="editZzjg" class="btn btn-sm btn-primary">
                                         修改本组织
-                                    </button>
-                                    <button id="delZzjg" class="btn btn-sm btn-danger" >
-                                        删除本组织
                                     </button>
                                 </div>
                             </div>
@@ -111,7 +103,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="modalTitle">添加组织机构</h4>
+                <h4 class="modal-title" id="modalTitle"><span class="module-name">添加</span>组织机构</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" id="zzjgForm">
@@ -150,7 +142,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary" id="saveAddzzjg">添加</button>
+                <button type="button" class="btn btn-primary" id="saveAddzzjg"><span class="module-name">添加</span></button>
             </div>
         </div>
     </div>

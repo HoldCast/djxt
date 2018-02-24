@@ -1,23 +1,20 @@
 var zzjgData = [
-    {id: 1, pId: 0, name: "双桥子街道党工委", open: true,checked: true},
-    {id: 11, pId: 1, name: "新鸿社区党委", lx: '街道社区党支部', gx: '新鸿社区', sj: '2003-11-08', open: true},
-    {id: 111, pId: 11, name: "居委会党支部", lx: '其他党支部', gx: '新鸿社区', sj: '2003-11-08', iconClose: true},
-    {id: 112, pId: 11, name: "电视台党支部", lx: '其他党支部', gx: '新鸿社区', sj: '2003-11-08'},
-    {id: 113, pId: 11, name: "印刷公司党支部", lx: '企业党支部', gx: '新鸿社区', sj: '2003-11-08'},
-    {id: 12, pId: 1, name: "猛追湾社区党委", lx: '社区党支部', gx: '猛追湾社区', sj: '2001-11-08', open: true},
-    {id: 121, pId: 12, name: "居委会党支部", lx: '其他党支部', gx: '猛追湾社区', sj: '2001-11-08'},
-    {id: 122, pId: 12, name: "国电党支部", lx: '企业党支部', gx: '猛追湾社区', sj: '2001-11-08',},
-    {id: 13, pId: 1, name: "沙河社区党委", lx: '社区党支部', gx: '沙河社区', sj: '2005-11-08'}
+    {id: 1, pId: 0, name: "双桥子街道党工委",dzblx: '街道社区党支部', ssgx: '新鸿社区', jlsj: '2003-11-08', open: true,checked: true},
+    {id: 11, pId: 1, name: "新鸿社区党委", dzblx: '街道社区党支部', ssgx: '新鸿社区', jlsj: '2003-11-08', open: true},
+    {id: 111, pId: 11, name: "居委会党支部", dzblx: '其他党支部', ssgx: '新鸿社区', jlsj: '2003-11-08', iconClose: true},
+    {id: 112, pId: 11, name: "电视台党支部", dzblx: '其他党支部', ssgx: '新鸿社区', jlsj: '2003-11-08'},
+    {id: 113, pId: 11, name: "印刷公司党支部", dzblx: '企业党支部', ssgx: '新鸿社区', jlsj: '2003-11-08'},
+    {id: 12, pId: 1, name: "猛追湾社区党委", dzblx: '社区党支部', ssgx: '猛追湾社区', jlsj: '2001-11-08', open: true},
+    {id: 121, pId: 12, name: "居委会党支部", dzblx: '其他党支部', ssgx: '猛追湾社区', jlsj: '2001-11-08'},
+    {id: 122, pId: 12, name: "国电党支部", dzblx: '企业党支部', ssgx: '猛追湾社区', jlsj: '2001-11-08',},
+    {id: 13, pId: 1, name: "沙河社区党委", dzblx: '社区党支部', ssgx: '沙河社区', jlsj: '2005-11-08'}
 ];
-var nodeId = '';
+var nodeData = '';
 
 
 $(function () {
     zzjgTree(zzjgData);
-    addZzjg();
-    $('.form_date').datetimepicker({
-        format: 'yyyy-mm-dd hh:ii'
-    });
+    zzjgInfo();
 });
 
 function zzjgTree(zzjgData) {
@@ -34,6 +31,7 @@ function zzjgTree(zzjgData) {
         },
         callback: {
             onClick: function (event, treeId, treeNode) {
+                nodeData = treeNode;
                 var name = treeNode.name;
                 $('#zzjgTable').empty();
                 $('#zzjgTableName').text(name);
@@ -45,9 +43,9 @@ function zzjgTree(zzjgData) {
                         var html = '<tr data-expanded="true">' +
                             '<td>' + (i + 1) + '</td>' +
                             '<td>' + tRow.name + '</td>' +
-                            '<td>' + tRow.lx + '</td>' +
-                            '<td>' + tRow.gx + '</td>' +
-                            '<td>' + tRow.sj + '</td>' +
+                            '<td>' + tRow.dzblx + '</td>' +
+                            '<td>' + tRow.ssgx + '</td>' +
+                            '<td>' + tRow.jlsj + '</td>' +
                             '<td>' +
                             '<span><button class="btn btn-primary btn-xs edit">编辑</button></span>\n' +
                             '<span><button class="btn btn-danger btn-xs">删除</button></span>' +
@@ -68,7 +66,25 @@ function zzjgTree(zzjgData) {
     $('#zzjgTree_1_a').click(); //选中第一个节点
 }
 //添加组织机构
-function addZzjg() {
+function zzjgInfo() {
+
+    //添加组织机构
+    $('#addZzjg').click(function () {
+        $('#zzjgModal').find('.module-name').text('添加');
+        $('#zzjgModal').modal('show');
+        $('#zzjgForm')[0].reset();
+    });
+
+    //编辑组织机构
+    $('#editZzjg').click(function () {
+        $('#zzjgModal').find('.module-name').text('修改');
+        $('#dzbmc').val(nodeData.name);
+        $('#dzblx').val(nodeData.dzblx);
+        $('#ssgx').val(nodeData.ssgx);
+        $('#jlsj').val(nodeData.jlsj);
+        $('#zzjgModal').modal('show');
+    });
+    //确认添加,编辑
     $('#saveAddzzjg').off('click').on('click',function () {
         var d = {};
         var t = $('#zzjgForm').serializeArray();
@@ -76,5 +92,6 @@ function addZzjg() {
             d[this.name] = this.value;
         });
         console.log(d);
+        $('#zzjgModal').modal('hide');
     });
 }
