@@ -174,7 +174,12 @@
                     $('#partySlogan').show();
                 }
                 else if(type == 'manage'){
-                    window.open('../../admin/html/login.html');
+                    if(localStorage.loginStatus == '1'){
+                        window.open('../../admin/html/home.html');
+                    }else{
+                        window.open('../../admin/html/login.html');
+                    }
+
                     return false;
                 }
                 else{

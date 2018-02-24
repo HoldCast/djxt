@@ -11,6 +11,7 @@ $(function () {
 //创建左边菜单
 function createHomeMenu() {
     $('#commonHeader').load('header.html');
+    $('#footer').load('footer.html');
     var menuHtml = '';
     for (var i = 0; i < homeMenu.length; i++) {
         var menuItem = homeMenu[i];

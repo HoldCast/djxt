@@ -46,6 +46,7 @@
 <script>
 	$('#login').off('click').on('click',function () {
         location.href = 'home.html';
+        localStorage.loginStatus = '1';
 		$.ajax({
 			url: '/admin/user/login',
 			type: 'post',
