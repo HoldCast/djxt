@@ -1,5 +1,6 @@
 //父框架全局变量
 var FrameName = '';             //模块名称
+var serverUrl = 'http://127.0.0.1:8080';
 
 $(function () {
     createHomeMenu();   //创建左边菜单

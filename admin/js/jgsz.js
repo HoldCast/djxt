@@ -18,52 +18,64 @@ $(function () {
 });
 
 function zzjgTree(zzjgData) {
-
-    var setting = {
-        view: {
-            showIcon: showIconForTree
-        },
-        data: {
-            simpleData: {
-                enable: true,
-                txtSelectedEnable: false
-            }
-        },
-        callback: {
-            onClick: function (event, treeId, treeNode) {
-                nodeData = treeNode;
-                var name = treeNode.name;
-                $('#zzjgTable').empty();
-                $('#zzjgTableName').text(name);
-                var tableData = treeNode.children;
-                nodeId = treeNode.id;
-                if(tableData && tableData.length){
-                    for (var i = 0; i < tableData.length; i++) {
-                        var tRow = tableData[i];
-                        var html = '<tr data-expanded="true">' +
-                            '<td>' + (i + 1) + '</td>' +
-                            '<td>' + tRow.name + '</td>' +
-                            '<td>' + tRow.dzblx + '</td>' +
-                            '<td>' + tRow.ssgx + '</td>' +
-                            '<td>' + tRow.jlsj + '</td>' +
-                            '<td>' +
-                            '<span><button class="btn btn-primary btn-xs edit">编辑</button></span>\n' +
-                            '<span><button class="btn btn-danger btn-xs">删除</button></span>' +
-                            '</td>' +
-                            '</tr>';
-                        $('#zzjgTable').append(html);
+    $.ajax({
+        url: serverUrl + '/admin/zzjg/getZzjgInfo',
+        type: 'post',
+        dataType: 'json',
+        success: function (json) {
+            console.log(json);
+            var zzjgData = json.data;
+            console.log(zzjgData)
+            var setting = {
+                view: {
+                    showIcon: showIconForTree
+                },
+                data: {
+                    simpleData: {
+                        enable: true,
+                        txtSelectedEnable: false
+                    }
+                },
+                callback: {
+                    onClick: function (event, treeId, treeNode) {
+                        nodeData = treeNode;
+                        var name = treeNode.name;
+                        $('#zzjgTable').empty();
+                        $('#zzjgTableName').text(name);
+                        var tableData = treeNode.children;
+                        nodeId = treeNode.id;
+                        if(tableData && tableData.length){
+                            for (var i = 0; i < tableData.length; i++) {
+                                var tRow = tableData[i];
+                                var html = '<tr data-expanded="true">' +
+                                    '<td>' + (i + 1) + '</td>' +
+                                    '<td>' + tRow.name + '</td>' +
+                                    '<td>' + tRow.dzblx + '</td>' +
+                                    '<td>' + tRow.ssgx + '</td>' +
+                                    '<td>' + tRow.jlsj + '</td>' +
+                                    '<td>' +
+                                    '<span><button class="btn btn-primary btn-xs edit">编辑</button></span>\n' +
+                                    '<span><button class="btn btn-danger btn-xs">删除</button></span>' +
+                                    '</td>' +
+                                    '</tr>';
+                                $('#zzjgTable').append(html);
+                            }
+                        }
                     }
                 }
-            }
-        }
-    };
+            };
 
-    function showIconForTree(treeId, treeNode) {
-        //return !treeNode.isParent;
-    };
-    //初始化
-    var treeObj = $.fn.zTree.init($("#zzjgTree"), setting, zzjgData);
-    $('#zzjgTree_1_a').click(); //选中第一个节点
+            function showIconForTree(treeId, treeNode) {
+                //return !treeNode.isParent;
+            };
+            //初始化
+            var treeObj = $.fn.zTree.init($("#zzjgTree"), setting, zzjgData);
+            $('#zzjgTree_1_a').click(); //选中第一个节点
+        }
+
+    });
+
+
 }
 //添加组织机构
 function zzjgInfo() {
@@ -93,5 +105,18 @@ function zzjgInfo() {
         });
         console.log(d);
         $('#zzjgModal').modal('hide');
+        $.ajax({
+            url: serverUrl + '/admin/zzjg/addZzjg',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                name: 'tt',
+                jlsj: '2008-08-08',
+                pId: '1'
+            },
+            success: function (json) {
+                console.log(json);
+            }
+        });
     });
 }
